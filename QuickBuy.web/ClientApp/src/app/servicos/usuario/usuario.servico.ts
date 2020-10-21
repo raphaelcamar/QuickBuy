@@ -12,19 +12,18 @@ export class UsuarioServico {
   private baseUrl: string;
   private _usuario: Usuario;
 
+  set usuario(usuario: Usuario) {
+    sessionStorage.setItem("usuario-autenticado", JSON.stringify(usuario));
+    this._usuario = usuario;
+  }
+
   get usuario(): Usuario {
     let usuario_json = sessionStorage.getItem("usuario-autenticado");
     this._usuario = JSON.parse(usuario_json);
     return this._usuario;
   }
 
-  set usuario(usuario : Usuario) {
-    sessionStorage.setItem("usuario-autenticado", JSON.stringify(usuario));
-    this._usuario = usuario
-  }
-
   public usuario_autenticado(): boolean {
-    console.log(this._usuario != null && this._usuario.email != "" && this._usuario.senha != "");
     return this._usuario != null && this._usuario.email != "" && this._usuario.senha != "";
   }
 

@@ -16,7 +16,9 @@ namespace QuickBuy.Repositorio.Repositorios
 
         public Usuario Obter(string email, string senha)
         {
-            return QuickBuyContexto.Usuarios.FirstOrDefault(u => u.Email == email && u.Senha == senha);
+           Usuario usuario =  QuickBuyContexto.Usuarios.FirstOrDefault(u => u.Email == email && u.Senha == senha);
+
+            return usuario;
         }
 
         public Usuario Obter(string email)

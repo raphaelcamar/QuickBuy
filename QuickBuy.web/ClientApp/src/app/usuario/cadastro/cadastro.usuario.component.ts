@@ -27,6 +27,7 @@ export class CadastroUsuarioComponent implements OnInit {
 
   public cadastrar() {
     this.ativar_spinner = true
+    console.log(this.usuario);
     this.usuarioServico.cadastrarUsuario(this.usuario)
       .subscribe(
         usuarioJson => {

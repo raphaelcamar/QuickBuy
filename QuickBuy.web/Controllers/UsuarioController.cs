@@ -23,11 +23,18 @@ namespace QuickBuy.web.Controllers
             try
             {
                 var usuarioCadastrado = _usuarioRepositorio.Obter(usuario.Email);
+
                 if(usuarioCadastrado != null)
                     return BadRequest("Usuário já cadastrado no sistema");
 
-                //usuario.EhAdministrador = true;
+                usuario.Validate();
+
+                if (!usuario.EhValido)
+                    return BadRequest(usuarioCadastrado.ObterMensagensValidacao());
+
+                // usuario.EhAdministrador = true;
                 _usuarioRepositorio.Adicionar(usuario);
+
                 return Ok();
             }catch(Exception e)
             {
@@ -58,7 +65,7 @@ namespace QuickBuy.web.Controllers
 
                 if(usuarioRetorno != null)
                 {
-                    return Ok(usuario);
+                    return Ok(usuarioRetorno);
                 }
                 return BadRequest("Usuário ou senha inválidos");
             }

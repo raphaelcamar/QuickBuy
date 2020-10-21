@@ -1,7 +1,7 @@
 import { Produto } from "../../modelo/produto";
 
-export class LojaCarrinhoCompras {
 
+export class LojaCarrinhoCompras {
 
   public produtos: Produto[] = [];
 
@@ -25,6 +25,8 @@ export class LojaCarrinhoCompras {
     if(produtoLocalStorage){
       return JSON.parse(produtoLocalStorage);
     }
+
+    return this.produtos;
   }
 
   public removerProduto(produto: Produto) {
@@ -39,5 +41,16 @@ export class LojaCarrinhoCompras {
 
   atualizar(produtos: Produto[]) {
     localStorage.setItem("produtoLocalStorage", JSON.stringify(produtos));
+  }
+
+  public temItensCarrinhoCompras(): boolean {
+    var itens = this.obterProdutos();
+
+    return (itens.length > 0);
+}
+
+
+  limparCarrinhoCompras() {
+    localStorage.setItem("produtoLocalStorage", "");
   }
 }
