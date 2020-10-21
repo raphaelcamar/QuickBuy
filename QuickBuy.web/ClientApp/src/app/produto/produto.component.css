@@ -1,0 +1,11 @@
+.titulo{
+    color : #666;
+}
+
+.custom-file-label::after{
+    content : "Escolher";
+}
+
+.invalid-feedback{
+    display:block
+}

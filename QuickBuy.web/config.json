@@ -1,7 +1,7 @@
 {
   "ConnectionStrings": {
     "SqlServerConnection": "",
-    "QuickBuyDB": "Server=(localdb)\\MSSQLLocalDB;Database=LmsDB;Trusted_Connection=True;MultipleActiveResultSets=true"
+    "QuickBuyDB": "Server=(localdb)\\MSSQLLocalDB;Database=QuickBuyDb;Trusted_Connection=True;MultipleActiveResultSets=true"
   }
 }
 

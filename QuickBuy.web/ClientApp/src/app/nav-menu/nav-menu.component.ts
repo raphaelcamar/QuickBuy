@@ -25,10 +25,20 @@ export class NavMenuComponent {
   public usuarioLogado(): boolean {
 
     return this.usuarioServico.usuario_autenticado();
+
+  }
+  public usuario_administrador(): boolean {
+    let b = this.usuarioServico.usuario_administrador();
+    console.log('NAV MENU', b);
+    return b;
   }
 
   sair() {
     this.usuarioServico.limpar_sessao();
     this.router.navigate(['/']);
+  }
+
+  get usuario() {
+    return this.usuarioServico.usuario;
   }
 }

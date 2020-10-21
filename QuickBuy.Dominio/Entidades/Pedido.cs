@@ -28,7 +28,7 @@ namespace QuickBuy.Dominio.Entidades
 
             if (!ItensPedido.Any())
             {
-                AdicionarCritica("Crítica - Pedido não pode ficar sem item de pedidod");
+                AdicionarCritica("Crítica - Pedido não pode ficar sem item de pedido");
             }
             if (string.IsNullOrEmpty(CEP))
             {

@@ -24,12 +24,23 @@ export class UsuarioServico {
   }
 
   public usuario_autenticado(): boolean {
+    console.log(this._usuario != null && this._usuario.email != "" && this._usuario.senha != "");
     return this._usuario != null && this._usuario.email != "" && this._usuario.senha != "";
+  }
+
+  public usuario_administrador(): boolean {
+    let v =  this.usuario_autenticado() && this.usuario.ehAdministrador;
+    
+    return v;
   }
 
   public limpar_sessao() {
     sessionStorage.setItem("usuario-autenticado", "");
     this._usuario = null;
+  }
+
+  get headers(): HttpHeaders {
+    return new HttpHeaders().set('content-type', 'application/json');
   }
 
   constructor(private http: HttpClient, @Inject("BASE_URL") baseUrl: string) {
@@ -45,6 +56,11 @@ export class UsuarioServico {
 
     //this.baseURL = raiz do site
     return this.http.post<Usuario>(this.baseUrl + "api/usuario/verificarUsuario", body, { headers });
+  }
+
+  public cadastrarUsuario(usuario: Usuario): Observable<Usuario>{
+
+    return this.http.post<Usuario>(this.baseUrl + "api/usuario", JSON.stringify(usuario), { headers: this.headers });
   }
 }
 

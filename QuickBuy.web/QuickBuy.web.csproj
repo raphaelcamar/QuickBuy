@@ -34,10 +34,17 @@
 
   <ItemGroup>
     <None Remove="ClientApp\src\app\autorizacao\guarda.rotas.ts" />
+    <None Remove="ClientApp\src\app\loja\carrinho\loja.carrinho.compras.ts" />
+    <None Remove="ClientApp\src\app\loja\efetivar\loja.efetivar.component.ts" />
+    <None Remove="ClientApp\src\app\loja\pesquisa\loja.pesquisa.component.ts" />
+    <None Remove="ClientApp\src\app\loja\produto\loja.produto.component.ts" />
+    <None Remove="ClientApp\src\app\modelo\produto.ts" />
     <None Remove="ClientApp\src\app\modelo\ususario.ts" />
+    <None Remove="ClientApp\src\app\produto\pesquisa\pesquisa.produto.component.ts" />
     <None Remove="ClientApp\src\app\produto\produto.component.ts" />
     <None Remove="ClientApp\src\app\servicos\produto\produto.servico.ts" />
     <None Remove="ClientApp\src\app\servicos\usuario\usuario.servico.ts" />
+    <None Remove="ClientApp\src\app\usuario\cadastro\cadastro.usuario.component.ts" />
     <None Remove="ClientApp\src\app\usuario\login\login.component.ts" />
   </ItemGroup>
 
@@ -56,7 +63,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="ClientApp\src\app\usuario\cadastro\" />
+    <Folder Include="wwwroot\arquivos\" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

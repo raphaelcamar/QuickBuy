@@ -13,7 +13,7 @@ namespace QuickBuy.Repositorio.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Nome = table.Column<string>(maxLength: 50, nullable: false),
                     Descricao = table.Column<string>(maxLength: 100, nullable: false)
                 },
@@ -27,7 +27,7 @@ namespace QuickBuy.Repositorio.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Nome = table.Column<string>(maxLength: 50, nullable: false),
                     Descricao = table.Column<string>(maxLength: 400, nullable: false),
                     Preco = table.Column<decimal>(nullable: false)
@@ -42,7 +42,7 @@ namespace QuickBuy.Repositorio.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Email = table.Column<string>(maxLength: 50, nullable: false),
                     Senha = table.Column<string>(maxLength: 400, nullable: false),
                     Nome = table.Column<string>(maxLength: 50, nullable: false),
@@ -58,7 +58,7 @@ namespace QuickBuy.Repositorio.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     DataPedido = table.Column<DateTime>(nullable: false),
                     UsuarioId = table.Column<int>(nullable: false),
                     DataPrevisaoEntrega = table.Column<DateTime>(nullable: false),
@@ -91,7 +91,7 @@ namespace QuickBuy.Repositorio.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     ProdutoId = table.Column<int>(nullable: false),
                     Quantidade = table.Column<int>(nullable: false),
                     PedidoId = table.Column<int>(nullable: true)
@@ -106,6 +106,21 @@ namespace QuickBuy.Repositorio.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
+
+            migrationBuilder.InsertData(
+                table: "FormaPagamento",
+                columns: new[] { "Id", "Descricao", "Nome" },
+                values: new object[] { 1, "Forma de pagamento Boleto", "Boleto" });
+
+            migrationBuilder.InsertData(
+                table: "FormaPagamento",
+                columns: new[] { "Id", "Descricao", "Nome" },
+                values: new object[] { 2, "Forma de pagamento Cartão de Crédito", "Cartão de Crédito" });
+
+            migrationBuilder.InsertData(
+                table: "FormaPagamento",
+                columns: new[] { "Id", "Descricao", "Nome" },
+                values: new object[] { 3, "Forma de pagamento Depósito", "Depósito" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_ItemPedido_PedidoId",

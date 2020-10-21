@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using QuickBuy.Repositorio.Contexto;
 
@@ -15,12 +16,14 @@ namespace QuickBuy.Repositorio.Migrations
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "2.2.3-servicing-35854")
-                .HasAnnotation("Relational:MaxIdentifierLength", 64);
+                .HasAnnotation("Relational:MaxIdentifierLength", 128)
+                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
             modelBuilder.Entity("QuickBuy.Dominio.Entidades.ItemPedido", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int?>("PedidoId");
 
@@ -38,7 +41,8 @@ namespace QuickBuy.Repositorio.Migrations
             modelBuilder.Entity("QuickBuy.Dominio.Entidades.Pedido", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("CEP")
                         .IsRequired()
@@ -78,7 +82,8 @@ namespace QuickBuy.Repositorio.Migrations
             modelBuilder.Entity("QuickBuy.Dominio.Entidades.Produto", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Descricao")
                         .IsRequired()
@@ -88,7 +93,10 @@ namespace QuickBuy.Repositorio.Migrations
                         .IsRequired()
                         .HasMaxLength(50);
 
-                    b.Property<decimal>("Preco");
+                    b.Property<string>("NomeArquivo");
+
+                    b.Property<decimal>("Preco")
+                        .HasColumnType("decimal(19,4)");
 
                     b.HasKey("Id");
 
@@ -98,7 +106,10 @@ namespace QuickBuy.Repositorio.Migrations
             modelBuilder.Entity("QuickBuy.Dominio.Entidades.Usuario", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<bool>("EhAdministrador");
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -124,7 +135,8 @@ namespace QuickBuy.Repositorio.Migrations
             modelBuilder.Entity("QuickBuy.Dominio.ObjetoDeValor.FormaPagamento", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Descricao")
                         .IsRequired()
